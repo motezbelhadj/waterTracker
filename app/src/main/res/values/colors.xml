@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme Colors -->
+    <color name="dark_background">#1C1B20</color> <!-- A deep, soft grey -->
+    <color name="dark_surface">#2B2930</color> <!-- Slightly lighter grey for input fields -->
+    <color name="dark_text_primary">#E6E1E5</color> <!-- Off-white for high emphasis text -->
+    <color name="dark_text_hint">#938F99</color> <!-- Softer grey for hints -->
+    <color name="purple_accent">#D0BCFF</color> <!-- A modern, vibrant purple -->
+    <color name="purple_text">#381E72</color> <!-- Dark purple for text on buttons -->
+
+    <!-- You can define your light theme colors here as well -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>

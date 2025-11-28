@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Use the new surface color for the input field background -->
+    <solid android:color="@color/dark_surface" />
+    <!-- Define the corner radius -->
+    <corners android:radius="12dp" />
+</shape>
