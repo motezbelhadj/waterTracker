@@ -100,6 +100,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_USER_ID + "=?", new String[]{String.valueOf(userId)});
     }
 
+    public int getDailyGoal(int userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_DAILY_GOAL + " FROM " + TABLE_USERS + " WHERE " + COLUMN_USER_ID + "=?", new String[]{String.valueOf(userId)});
+        int dailyGoal = 0;
+        if (cursor.moveToFirst()) {
+            dailyGoal = cursor.getInt(0);
+        }
+        cursor.close();
+        return dailyGoal;
+    }
+
     public boolean updateUser(int userId, String firstName, String lastName, String email, int age, float height, float weight, String gender, int dailyGoal) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

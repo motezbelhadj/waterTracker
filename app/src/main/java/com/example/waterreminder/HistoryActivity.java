@@ -1,10 +1,9 @@
 package com.example.waterreminder;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,16 +27,18 @@ public class HistoryActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
-        int userId = sharedPreferences.getInt("user_id", -1);
+        Intent intent = getIntent();
+        int userId = intent.getIntExtra("userId", -1);
+        int dailyGoal = 0;
 
         if (userId != -1) {
             consumptionHistory = dbHelper.getConsumptionHistory(userId);
+            dailyGoal = dbHelper.getDailyGoal(userId);
         } else {
             consumptionHistory = new ArrayList<>();
         }
 
-        historyAdapter = new HistoryAdapter(consumptionHistory);
+        historyAdapter = new HistoryAdapter(consumptionHistory, dailyGoal);
         historyRecyclerView.setAdapter(historyAdapter);
 
         backButton = findViewById(R.id.backButton);

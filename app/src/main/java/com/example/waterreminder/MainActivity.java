@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.Manifest;
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView greeting, consumedAmount;
     private ProgressBar waterProgress;
-    private Button add250ml, add500ml, profileBtn, historyBtn;
+    private Button add250ml, add500ml;
+    private ImageButton profileBtn, historyBtn;
     private int dailyGoal = 2000;
     private int currentConsumption = 0;
     private int userId;
@@ -133,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = db.getWaterIntake(userId, today);
         if (cursor.moveToFirst()) {
             currentConsumption = cursor.getInt(cursor.getColumnIndexOrThrow("total"));
+        } else {
+            currentConsumption = 0;
         }
         cursor.close();
         updateUI();
@@ -145,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        consumedAmount.setText("Today's consumption: " + currentConsumption + " ml");
+        consumedAmount.setText(currentConsumption + " ml");
         waterProgress.setMax(dailyGoal);
         waterProgress.setProgress(currentConsumption);
     }

@@ -14,91 +14,105 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="24dp"
         android:text="Hello, User!"
         android:textColor="@color/dark_text_primary"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/consumedAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/greeting"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:text="Today's consumption: 0 ml"
-        android:textColor="@color/dark_text_hint"
-        android:textSize="16sp" />
-
-    <ProgressBar
-        android:id="@+id/waterProgress"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@id/consumedAmount"
-        android:layout_marginTop="32dp"
-        android:max="2000"
-        android:progress="0"
-        android:progressBackgroundTint="@color/dark_surface"
-        android:progressTint="@color/purple_accent" />
-
     <LinearLayout
-        android:id="@+id/addButtonsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/waterProgress"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <Button
-            android:id="@+id/add250ml"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/purple_accent"
-            android:text="+250ml"
-            android:textColor="@color/purple_text"
-            app:cornerRadius="16dp" />
-
-        <Button
-            android:id="@+id/add500ml"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/purple_accent"
-            android:text="+500ml"
-            android:textColor="@color/purple_text"
-            app:cornerRadius="16dp" />
-    </LinearLayout>
-
-    <LinearLayout
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/historyBtn"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="History"
-            android:textColor="@color/purple_accent" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="History"
+            android:src="@drawable/ic_history" />
 
-        <Button
+        <ImageButton
             android:id="@+id/profileBtn"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Profile"
+            android:src="@drawable/ic_profile" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNav"
+        android:layout_below="@id/greeting"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/progressLayout"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/waterProgress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:indeterminate="false"
+                android:max="2000"
+                android:progress="0"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:rotation="-90" />
+
+            <TextView
+                android:id="@+id/consumedAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="0 ml"
+                android:textColor="@color/dark_text_primary"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/addButtonsLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Profile"
-            android:textColor="@color/purple_accent" />
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/add250ml"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/purple_accent"
+                android:text="+250ml"
+                android:textColor="@color/purple_text"
+                app:cornerRadius="18dp" />
+
+            <Button
+                android:id="@+id/add500ml"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/purple_accent"
+                android:text="+500ml"
+                android:textColor="@color/purple_text"
+                app:cornerRadius="18dp" />
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
